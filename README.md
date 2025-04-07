@@ -24,7 +24,7 @@ However:
 
 You can upload your CSV-formatted gravitational signal (real or simulated), and validate it live using the framework developed by the authors.
 
-The platform was created from research contributions by [Deywe Anderson](https://github.com/deywe) and [Dr. Inês Brosso](https://www.linkedin.com/in/inesbrosso/), and includes the full predictive 3D quantum-behavior model.
+The platform was created from research contributions by [Deywe Okabe](https://github.com/deywe) and [Dr. Inês Brosso]([https://www.linkedin.com/in/inesbrosso/](https://www.linkedin.com/in/ines-brosso-16331b/)), and includes the full predictive 3D quantum-behavior model.
 
 ---
 

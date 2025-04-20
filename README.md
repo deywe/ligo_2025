@@ -50,6 +50,99 @@ If you are a researcher, and would like access to additional resources or review
 
 Thank you for your interest in this open science initiative. We support reproducible, transparent science — while respectfully protecting proprietary breakthroughs under active development.
 
+🛠️ Workflow: Validating LIGO Data Using HARPIA + SPHY
+This repository allows researchers to experiment with real or simulated gravitational wave data — such as LIGO strain datasets — and apply symbolic gravitational correction and structural validation through SPHY-based modeling.
+
+Follow the step-by-step validation process below:
+
+📥 Step 1: Download LIGO Dataset
+
+Visit a public LIGO repository or other source providing raw strain data.
+
+Choose any raw dataset of your interest.
+
+Rename the downloaded file to:
+
+dados_lido.txt
+
+This is required for compatibility with the conversion script.
+
+🔁 Step 2: Convert the Dataset into SPHY-Compatible Format
+Use the provided converter script to transform LIGO’s raw .txt data into a .csv file readable by the SPHY modules. Run the following:
+
+▶️ File:
+
+➡️ https://github.com/deywe/ligo_2025/blob/main/conver_txt_LIGO_dataset_to_csv_file.py
+
+This will generate a structured CSV file with columns like amplitude_ligo, tempo, sphy_sem_prev, and sphy_com_prev.
+
+📊 Step 3: Analyze and Visualize in 2D Mode
+You can now process your pre-processed CSV file using gravitational correction, FFT, and waveform mesh visualization:
+
+Use any of the following open-source modules available in this repository:
+
+
+🌀 FFT-Based Structural Analysis:
+
+https://github.com/deywe/ligo_2025/blob/main/FFT_LIGO_SPHY_eng.py
+
+📈 Open-Source CSV Mesh Plotting:
+
+https://github.com/deywe/ligo_2025/blob/main/ligo_2d_csv_codigo_open_source.py
+
+🇮🇱 Alternate Encoding (Hebrew charset):
+
+https://github.com/deywe/ligo_2025/blob/main/%D7%A7%D7%95%D7%93_csv_2d_%D7%9C%D7%99%D7%92%D7%95%20(%D7%94%D7%A2%D7%AA%D7%A7).py
+
+🇯🇵 Alternate Encoding (Japanese charset):
+
+https://github.com/deywe/ligo_2025/blob/main/%E3%83%AA%E3%82%B4_2D_CSV_%E3%82%B3%E3%83%BC%E3%83%89_%E3%82%AA%E3%83%BC%E3%83%97%E3%83%B3%E3%82%BD%E3%83%BC%E3%82%B9%20(%E3%82%B3%E3%83%94%E3%83%BC).py
+
+These scripts reconstruct vibrational patterns with residual coherence signals influenced by multi-body gravitational forces (Earth, Moon, Sun, Jupiter).
+
+🧠 Step 4: Full 3D Quantum Integration (HARPIA AI)
+To perform higher-dimensional quantum circuit testing, with real-time feedback and predictive coherence modeling, you'll need to access the proprietary HARPIA interface.
+
+🔗 Access the HARPIA AI platform at:
+
+→ https://www.harpiaco2.com.br
+
+🛸 What you can do:
+
+
+Upload your converted CSV-formatted dataset
+
+Execute the STDJ (System of Temporal Just-Fold) modulation pipeline
+
+View dynamic 3D quantum resonance reconstructions
+
+Validate structure against Qiskit circuits and SPHY-layer predictions
+
+The platform implements the full inference engine using symbolic resonance terms ( S(\Phi) = \frac{\lambda G}{1 + \gamma \Phi^2} ) and phase-interpolated mesh alignment.
+
+⚠️ Note: Full 3D capabilities are only available through the hosted web platform due to computational complexity and licensing terms.
+
+🌀 Summary:
+Phase	Task
+Step 1	Download any LIGO dataset and rename it to dados_lido.txt
+Step 2	Convert using conver_txt_LIGO_dataset_to_csv_file.py
+Step 3	Explore gravitational signatures using 2D FFT/CSV scripts
+Step 4 (optional)	For 3D predictive testing, sign into https://harpiaco2.com.br (Harp-IA)
+🧬 About HARPIA+SPHY
+This research was initiated by Deywe Okabe and Dr. Inês Brosso in the context of quantum-gravitational alignment and meta-material symbiosis. It applies symbolic fields and gravitational harmonics for coherence maintenance in quantum-phase systems.
+
+Algorithm core: STDJ — Self-Stabilizing Temporal Dobration
+
+Model base: ( H = H_0 + S(\Phi) )
+
+Thank you for your contribution to quantum-gravitational validation.
+
+We support transparent science and open reproducibility — harmonized with respect for active innovation.
+
+🌌
+
+— The HARPIA+SPHY Team
+
 Enjoy exploring gravitational physics with HARPIA! 🌌
 
 — The HARPIA+SPHY Team

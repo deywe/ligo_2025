@@ -139,6 +139,27 @@ Thank you for your contribution to quantum-gravitational validation.
 
 We support transparent science and open reproducibility — harmonized with respect for active innovation.
 
+🎼 Classical vs SPHY Resonance: A Side-by-Side Comparison
+To understand the conceptual leap introduced by SPHY, we encourage researchers to compare two fundamental approaches:
+
+📦 Script #1
+
+→ FFT_LIGO_SPHY_eng.py  
+
+🔍 Traditional Fourier decomposition of a multi-tone gravitational signal.
+
+🥣 Script #2
+
+→ canja_gravitacional.py  
+
+🧠 Applies gravitational correction using real planetary field values (Earth, Moon, Sun, Jupiter) to the raw amplitude before waveform analysis.
+
+
+"In one, you observe frequency.
+
+In the other, you remove distortion to hear the signal behind the cosmos." 🌌
+
+
 🌌
 
 — The HARPIA+SPHY Team

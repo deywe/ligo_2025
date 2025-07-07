@@ -2,57 +2,83 @@ import os
 import numpy as np
 import pandas as pd
 
-# ================================================================
-# 🔍 Step 1: Search for .txt file in current folder
-# ================================================================
+# ⚙️ Configurações iniciais
+np.random.seed(42)  # Para resultados reprodutíveis
+Fs = 4096  # Frequência de amostragem usada no LIGO para treinamentos reduzidos
+output_file = "dados_ligo.csv"
 
-# Automatically find the first .txt file in the current directory
+# 🔎 Localiza primeiro arquivo .txt na pasta atual
 txt_files = [f for f in os.listdir() if f.lower().endswith(".txt")]
-
 if not txt_files:
-    raise FileNotFoundError("❌ No .txt file found in this folder.")
-    
+    raise FileNotFoundError("❌ Nenhum arquivo .txt encontrado.")
+
 input_file = txt_files[0]
-print(f"📁 Loading input file: {input_file}")
+print(f"🧪 Convertendo arquivo: {input_file}")
 
-# ================================================================
-# 📥 Step 2: Read LIGO strain data from ASCII .txt (1 column)
-# ================================================================
+# 📥 Leitura dos dados
+raw = []
+with open(input_file, "r") as f:
+    for line in f:
+        if line.startswith("#") or not line.strip():
+            continue
+        parts = line.strip().split()
+        try:
+            floats = [float(p) for p in parts]
+            raw.append(floats)
+        except:
+            continue
 
-with open(input_file, "r") as file:
-    lines = file.readlines()
+data = np.array(raw)
+print(f"✅ Total de linhas válidas: {len(data)}")
 
-# ✅ Filter out header lines starting with '#' and convert to float
-strain_data = np.array([float(line.strip()) for line in lines if not line.startswith("#")])
+# ⚙️ Interpretação como tempo, amplitude (ou apenas amplitude)
+if data.shape[1] == 2:
+    tempo, amplitude = data[:, 0], data[:, 1]
+else:
+    amplitude = data[:, 0]
+    tempo = np.arange(0, len(amplitude)) / Fs
 
-# ================================================================
-# ⏱ Step 3: Build time series (assuming 16384 Hz sample rate)
-# ================================================================
+# 🎲 Geração dos campos adicionais (iguais ao pipeline real)
+N = len(tempo)
 
-Fs = 16384  # LIGO's standard sampling rate in Hz
-time = np.arange(0, len(strain_data)) / Fs
+hist_reparos = np.random.randint(1, 10, size=N)
+severidade = np.random.randint(1, 5, size=N)
+condicoes = np.random.randint(1, 5, size=N)
+impacto = np.random.randint(1, 5, size=N)
 
-# ================================================================
-# 🧾 Step 4: Export to DataFrame (and optionally add extra cols)
-# ================================================================
+# 🔮 Equação preditiva simbiótica HARPIA (replicando a otimização original)
+previsao_harpia = (
+    (hist_reparos * 0.2) +
+    (severidade * 0.4) +
+    (condicoes * 0.3) +
+    (impacto * 0.5) * np.exp(-tempo / 12)
+)
 
+# ✨ Campos simbiotizados SPHY
+angulo = 2 * np.pi * tempo
+phi1 = np.sin(angulo) * amplitude
+phi2 = np.cos(angulo) * amplitude
+
+epsilon = 1e-9
+max_amp = np.abs(amplitude).max() + epsilon
+coerencia = 1 - (np.abs(phi1 - phi2) / max_amp)
+
+sphy_sem_prev = np.abs(phi1 - phi2) * coerencia
+sphy_com_prev = sphy_sem_prev * (1 + previsao_harpia / 10)
+
+# ⬇️ Monta DataFrame
 df = pd.DataFrame({
-    "tempo": time,
-    "amplitude_ligo": strain_data,
-    "hist_reparos": np.random.randint(1, 10, size=len(time)),
-    "severidade": np.random.randint(1, 3, size=len(time)),
-    "condicoes": np.random.randint(1, 3, size=len(time)),
-    "impacto": np.random.randint(1, 5, size=len(time)),
+    "tempo": tempo,
+    "amplitude_ligo": amplitude,
+    "hist_reparos": hist_reparos,
+    "severidade": severidade,
+    "condicoes": condicoes,
+    "impacto": impacto,
+    "previsao_harpia": previsao_harpia,
+    "sphy_sem_prev": sphy_sem_prev,
+    "sphy_com_prev": sphy_com_prev
 })
 
-# Optional prediction logic (used in Harpia-based pipelines)
-df["previsao_harpia"] = df["hist_reparos"] * 0.5 + df["impacto"] * 0.8
-df["sphy_sem_prev"] = np.exp(- df["tempo"] * 0.1)
-df["sphy_com_prev"] = df["sphy_sem_prev"] * 1.2
-
-# ================================================================
-# 💾 Step 5: Save to CSV
-# ================================================================
-output_file = "dados_ligo.csv"
+# 💾 Salva CSV
 df.to_csv(output_file, index=False)
-print(f"✅ File saved successfully as: {output_file}")
+print(f"✅ Dataset salvo: {output_file}")
